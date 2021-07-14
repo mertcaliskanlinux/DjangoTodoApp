@@ -1,0 +1,28 @@
+{% extends 'partials/base.html' %}
+{% block title %}TODO XPS{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="border p-3">
+    <form method="POST">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input class="btn btn-success btn-block" type="submit" value="Gönder">
+    </form>
+    <hr>
+    {% for todo in todos %}
+    <div class="border p-3 mb-3">
+        <small>{{todo.date}}</small>
+        <div class="row">
+            <div class="col-md-8">
+                <p>{{todo.content}}</p>
+            </div>
+                <div class="col-md-4">
+                    <a class="btn btn-info btn-sm" href = "{% url 'todo-update' %}">Düzenle</a>
+                    <a class="btn btn-danger btn-sm">SİL</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+{% endblock %}

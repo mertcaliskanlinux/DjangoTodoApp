@@ -1,0 +1,16 @@
+{% extends 'partials/base.html' %}
+{% block title %}TODO XPS{% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="border p-3">
+    <div class="alert alert-danger">
+        <p> Silmek İstediğinize Eminmisiniz ?</p>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <a class = "btn btn-secondary" href="{% url 'todo-index' %}">Cancel</a>
+        <input class="btn btn-danger" type="Submit" value="Confirm">
+    </form>
+</div>
+{% endblock %}
